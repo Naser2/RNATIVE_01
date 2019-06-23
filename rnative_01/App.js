@@ -8,20 +8,27 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu'
-});
+import Nav from './src/Nav';
+import Generator from './src/Generator';
+// const instructions = Platform.select({
+//   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+//   android:
+//     'Double tap R on your keyboard to reload,\n' +
+//     'Shake or press menu button for dev menu'
+// });
 
 type Props = {};
-export default class App extends Component<Props> {
+
+class App extends Component {
+  state = {
+    name: 'My Awesome App'
+  };
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Nav name={this.state.name} />
+        <Text style={styles.mainItemsBckg}>Welcome to React Native!</Text>
+        <Generator />
       </View>
     );
   }
@@ -31,17 +38,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    backgroundColor: '#F5FCFF',
+    paddingTop: 50,
+    width: '100%'
   },
-  welcome: {
-    fontSize: 20,
+  mainItemsBckg: {
+    backgroundColor: 'lightblue',
     textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
+    width: ' 100%',
     marginBottom: 5
+  },
+  basicText: {
+    textAlign: 'center',
+    color: '#ffff',
+    padding: 20,
+    fontSize: 20
   }
 });
+
+export default App;
